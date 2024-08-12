@@ -22,7 +22,7 @@ export class TaskServices {
 
   createTask(task: Task): Observable<Task> {
     // POST request to the /add endpoint
-    return this.http.post<Task>(`${this.apiUrl}/add`, task);
+    return this.http.post<Task>(`${this.apiUrl}`, task);
   }
 
   deleteTask(id: string): Observable<void> {
@@ -30,5 +30,8 @@ export class TaskServices {
   }
   getAllTasks(): Observable<Task[]> {
     return this.http.get<Task[]>(this.apiUrl);
+  }
+  getTaskStats(): Observable<Map<string, number>> {
+    return this.http.get<Map<string, number>>(`${this.apiUrl}/stats`);
   }
 }
