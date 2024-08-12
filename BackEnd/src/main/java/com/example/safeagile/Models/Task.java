@@ -8,6 +8,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 import lombok.Data;
 import java.util.Date;
+import java.util.List;
+
 @Getter
 @Setter
 
@@ -35,9 +37,10 @@ public class Task {
   private Date endDate;
 
   private String assignee;
-
-
+ private String estimatedHours;
+private  String actualHours;
   @DBRef
   private Backlog backlog;
+
 
 }
