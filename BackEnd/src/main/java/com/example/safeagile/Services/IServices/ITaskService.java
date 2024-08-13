@@ -20,4 +20,6 @@ public interface ITaskService {
     void deleteTask(String id);
 
     Map<TaskStatus, Long> calculateTaskStats(); // Add this method
+    Map<String, Integer> getTaskStats();
+
 }

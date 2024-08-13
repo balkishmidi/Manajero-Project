@@ -3,6 +3,7 @@ package com.example.safeagile.Services.IServices;
 import com.example.safeagile.Models.UserStory;
 
 import java.util.List;
+import java.util.Map;
 
 public interface IUserStoryService {
     UserStory createUserStory(UserStory userStory);
@@ -11,4 +12,6 @@ public interface IUserStoryService {
     List<UserStory> getAllUserStories();
     UserStory updateUserStory(String id, UserStory userStory);
     void deleteUserStory(String id);
-}
+      Map<String, Integer> getuscout() ;
+
+    }

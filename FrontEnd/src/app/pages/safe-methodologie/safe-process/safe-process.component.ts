@@ -411,19 +411,6 @@ selectedSprintIds: Set<string> = new Set<string>();
     }
 
 
-generatePastelColor(): string {
-  const hue = Math.floor(Math.random() * 360); // Random hue value (0-360)
-  const saturation = 70; // Fixed saturation value for pastel colors
-  const lightness = 80; // High lightness value for pastel colors
-
-  return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
-}
-
-getColorForUserStory(userStoryId: string): string {
-  // Optionally, you can use the userStoryId to create a deterministic color
-  // For simplicity, this example generates a random pastel color
-  return this.generatePastelColor();
-}
 
   onSubmit() {
     console.log('User Story Submitted:', this.userStory);

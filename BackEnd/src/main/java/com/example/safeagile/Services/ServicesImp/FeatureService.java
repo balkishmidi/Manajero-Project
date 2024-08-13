@@ -11,9 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
@@ -51,5 +49,12 @@ public class FeatureService {
 
     public void deleteFeature(String id) {
         featureRepository.deleteById(id);
+    }
+
+    public Map<String, Integer> getfeaturescount() {
+        long totalfeature = featureRepository.count(); // Count all sprints
+        Map<String, Integer> stats = new HashMap<>();
+        stats.put("Total feature", (int) totalfeature); // Add total sprints to the stats map
+        return stats;
     }
 }

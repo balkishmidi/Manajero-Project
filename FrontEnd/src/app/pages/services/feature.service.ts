@@ -45,4 +45,10 @@ export class FeatureService {
     const url = `${this.apiUrl}/${id}`;
     return this.http.delete<void>(url);
   }
+
+  getfeaturescount(): Observable<{ [key: string]: number }> {
+    return this.http.get<{ [key: string]: number }>(`${this.apiUrl}/count`);
+  }
+
+ 
 }

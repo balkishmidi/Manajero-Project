@@ -70,4 +70,10 @@ public class TaskServiceImpl implements ITaskService {
 
         return statusCounts;
     }
+    public Map<String, Integer> getTaskStats() {
+        long totaltasks = taskRepository.count(); // Count all sprints
+        Map<String, Integer> stats = new HashMap<>();
+        stats.put("Total Tasks", (int) totaltasks); // Add total sprints to the stats map
+        return stats;
+    }
 }

@@ -79,4 +79,9 @@ public class TaskController {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+    @GetMapping("/count")
+    public Map<String, Integer> getTaskStats() {
+        return taskService.getTaskStats();
+    }
 }

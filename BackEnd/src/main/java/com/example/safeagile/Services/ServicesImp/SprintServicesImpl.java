@@ -13,10 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -115,6 +112,11 @@ public class SprintServicesImpl implements ISprintService {
         sprintRepository.deleteById(id);
     }
 
-
+    public Map<String, Integer> getSprintStats() {
+        long totalSprints = sprintRepository.count(); // Count all sprints
+        Map<String, Integer> stats = new HashMap<>();
+        stats.put("Total Sprints", (int) totalSprints); // Add total sprints to the stats map
+        return stats;
+    }
 
 }

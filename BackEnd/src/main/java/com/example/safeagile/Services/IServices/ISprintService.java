@@ -3,6 +3,7 @@ package com.example.safeagile.Services.IServices;
 import com.example.safeagile.Models.Sprint;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 public interface ISprintService {
@@ -12,4 +13,7 @@ public interface ISprintService {
     List<Sprint> getAllSprints();
     Sprint updateSprint(String id, Sprint sprint);
     void deleteSprint(String id);
+
+    Map<String, Integer> getSprintStats();
+
 }

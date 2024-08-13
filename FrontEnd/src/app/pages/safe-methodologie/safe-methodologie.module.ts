@@ -14,6 +14,7 @@ import { SafeProcessComponent } from './safe-process/safe-process.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { SprintDetailsComponent } from './sprint-details/sprint-details.component';
 import { TaskChartsComponent } from './charts/task-charts/task-charts.component';
+import { SprintChartsComponent } from './charts/sprint-charts/sprint-charts.component';
  
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { TaskChartsComponent } from './charts/task-charts/task-charts.component'
     SafeProcessComponent,
     SprintDetailsComponent,
     TaskChartsComponent,
+    SprintChartsComponent,
  
   ],
   imports: [

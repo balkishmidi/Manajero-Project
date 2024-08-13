@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -46,5 +47,10 @@ public class FeatureController {
     public ResponseEntity<Void> deleteFeature(@PathVariable("id") String id) {
         featureService.deleteFeature(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @GetMapping("/count")
+    public Map<String, Integer> getfeaturescount() {
+        return featureService.getfeaturescount();
     }
 }

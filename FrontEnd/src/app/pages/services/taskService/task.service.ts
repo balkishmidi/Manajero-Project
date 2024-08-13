@@ -34,4 +34,9 @@ export class TaskServices {
   getTaskStats(): Observable<Map<string, number>> {
     return this.http.get<Map<string, number>>(`${this.apiUrl}/stats`);
   }
+
+  getTaskCount(): Observable<{ [key: string]: number }> {
+    return this.http.get<{ [key: string]: number }>(`${this.apiUrl}/count`);
+  }
+  
 }

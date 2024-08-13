@@ -30,4 +30,12 @@ export class UserstoryService {
   deleteUserStory(id: string): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
+  getUSCount(): Observable<{ [key: string]: number }> {
+    return this.http.get<{ [key: string]: number }>(`${this.apiUrl}/count`);
+  }
+  
+  
+  
+  
+  
 }

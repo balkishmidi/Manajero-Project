@@ -36,4 +36,12 @@ export class SprintService {
   deleteSprint(id: string): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
+  // getSprintStats(): Observable<Record<string, number>> {
+  //   return this.http.get<Record<string, number>>(`${this.apiUrl}/stats`);
+  // }
+  getSprintStats(): Observable<{ [key: string]: number }> {
+    return this.http.get<{ [key: string]: number }>(`${this.apiUrl}/stats`);
+  }
+  
+  
 }
