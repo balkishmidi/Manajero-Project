@@ -18,15 +18,15 @@ public class BacklogController {
   private final BacklogServicesImpl backlogServices;
 
 
-  @PostMapping(path = "/add")
-  public ResponseEntity<?> AjouterBacklog(@RequestBody Backlog backlog) {
-    try {
-      Backlog backlogToSave = backlogServices.addBacklog(backlog);
-      return new ResponseEntity<>(backlogToSave, HttpStatus.CREATED);
-    } catch (RessourceNotFound exception) {
-      return new ResponseEntity<>(exception.getCause().getMessage(),HttpStatus.INTERNAL_SERVER_ERROR);
-    }
-  }
+ // @PostMapping(path = "/add")
+  //public ResponseEntity<?> AjouterBacklog(@RequestBody Backlog backlog) {
+ //try {
+  //Backlog backlogToSave = backlogServices.addBacklog(backlog);
+  //return new ResponseEntity<>(backlogToSave, HttpStatus.CREATED);
+  // } catch (RessourceNotFound exception) {
+  //   return new ResponseEntity<>(exception.getCause().getMessage(),HttpStatus.INTERNAL_SERVER_ERROR);
+  // }
+ // }
   @PutMapping(path = "/edit")
   public ResponseEntity<?> EditBacklog(@RequestBody  Backlog backlog) {
     try {

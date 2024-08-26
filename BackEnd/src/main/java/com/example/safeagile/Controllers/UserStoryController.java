@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/us")
@@ -55,5 +56,9 @@ public class UserStoryController {
     public ResponseEntity<Void> deleteUserStory(@PathVariable String id) {
         userStoryService.deleteUserStory(id);
         return ResponseEntity.noContent().build();
+    }
+    @GetMapping("/count")
+    public Map<String, Integer> getTaskStats() {
+        return userStoryService.getuscout();
     }
 }

@@ -10,9 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -84,6 +82,13 @@ public class UserStoryServiceImpl implements IUserStoryService {
     @Override
     public void deleteUserStory(String id) {
         userStoryRepository.deleteById(id);
+    }
+
+    public Map<String, Integer> getuscout() {
+        long totalus = userStoryRepository.count(); // Count all sprints
+        Map<String, Integer> stats = new HashMap<>();
+        stats.put("Total US", (int) totalus); // Add total sprints to the stats map
+        return stats;
     }
 
 }

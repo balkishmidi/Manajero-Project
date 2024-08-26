@@ -13,10 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -35,26 +32,23 @@ public class SprintServicesImpl implements ISprintService {
             throw new IllegalArgumentException("Sprint cannot be null");
         }
 
-        // Handle the user stories, allowing null user stories or missing user stories
         List<UserStory> userStories = sprint.getUserStory() != null ?
                 sprint.getUserStory().stream()
                         .map(userStory -> {
                             if (userStory == null || userStory.getId() == null) {
                                 return null;
                             }
-                            // Fetch the existing user story from the repository by its ID
-                            return userStoryRepository.findById(userStory.getId()).orElse(null);
+                            return userStoryRepository.findById(userStory.getId()).orElseThrow(() ->
+                                    new IllegalArgumentException("UserStory with ID " + userStory.getId() + " not found"));
                         })
-                        .filter(Objects::nonNull) // Only keep user stories that exist
+                        .filter(Objects::nonNull)
                         .collect(Collectors.toList())
-                : Collections.emptyList(); // Default to an empty list if user stories are null
+                : Collections.emptyList();
 
-        // Set the valid user stories in the Sprint
         sprint.setUserStory(userStories);
-
-        // Save the Sprint to the repository
         return sprintRepository.save(sprint);
     }
+
 
     @Override
     public List<Sprint> createSprint(List<Sprint> sprints) {
@@ -115,6 +109,11 @@ public class SprintServicesImpl implements ISprintService {
         sprintRepository.deleteById(id);
     }
 
-
+    public Map<String, Integer> getSprintStats() {
+        long totalSprints = sprintRepository.count(); // Count all sprints
+        Map<String, Integer> stats = new HashMap<>();
+        stats.put("Total Sprints", (int) totalSprints); // Add total sprints to the stats map
+        return stats;
+    }
 
 }
